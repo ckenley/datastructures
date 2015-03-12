@@ -5,18 +5,18 @@ package com.structures.list;
  */
 public interface List<T> {
 
-	int size();
+    int size();
 
-	boolean add(T value);
+    boolean add(T value);
 
-	void clear();
+    void clear();
 
-	T get(int index);
+    T get(int index);
 
-	boolean isEmpty();
+    boolean isEmpty();
 
-	boolean remove(int index);
-	
-	int indexOf(T value);
+    boolean remove(int index);
+
+    int indexOf(T value);
 
 }

@@ -13,7 +13,7 @@ public class LinkedListTest extends TestCase {
     @Rule
     public ExpectedException exception = ExpectedException.none();
 
-    LinkedList<String> testList;
+    private LinkedList<String> testList;
 
     @Before
     protected void setUp() {
@@ -21,7 +21,7 @@ public class LinkedListTest extends TestCase {
     }
 
     @After
-    protected void tearDown(){
+    protected void tearDown() {
         testList = null;
     }
 
@@ -72,7 +72,7 @@ public class LinkedListTest extends TestCase {
     @Test
     public void testRemove() {
         testList.add("1");
-        assertFalse(testList.remove(2));
+        assertFalse(testList.remove(1));
         assertFalse(testList.remove(-1));
         assertTrue(testList.remove(0));
     }
@@ -92,10 +92,12 @@ public class LinkedListTest extends TestCase {
     public void testAddFirst() {
         testList.add("1");
         testList.add("2");
-        assertTrue(testList.get(0).equals("1"));
-        testList.addfirst("3");
+        testList.addFirst("3");
         assertFalse(testList.get(0).equals("1"));
         assertTrue(testList.get(0).equals("3"));
+        assertTrue(testList.get(1).equals("1"));
+        assertTrue(testList.get(2).equals("2"));
+
     }
 
     @Test
@@ -105,7 +107,7 @@ public class LinkedListTest extends TestCase {
         testList.addLast("9");
         assertTrue(testList.get(0).equals("1"));
         assertFalse(testList.get(0).equals("3"));
-        assertTrue(testList.get(3).equals("9"));
+        assertTrue(testList.get(2).equals("9"));
     }
 
 }

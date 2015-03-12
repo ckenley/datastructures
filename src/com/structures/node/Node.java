@@ -5,8 +5,8 @@ package com.structures.node;
  */
 public interface Node<T> {
 
-	void setValue(T value);
+    T getValue();
 
-	T getValue();
+    void setValue(T value);
 
 }

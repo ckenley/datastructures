@@ -5,8 +5,8 @@ package com.structures.node;
  */
 public class ListNode<T> implements Node<T> {
 
-    T value;
-    ListNode<T> next;
+    private T value;
+    private ListNode<T> next;
 
     public ListNode() {
     }
@@ -17,21 +17,21 @@ public class ListNode<T> implements Node<T> {
     }
 
     @Override
-    public void setValue(T value) {
-        this.value = value;
-    }
-
-    @Override
     public T getValue() {
         return this.value;
     }
 
-    public void setNext(ListNode<T> node) {
-        this.next = node;
+    @Override
+    public void setValue(T value) {
+        this.value = value;
     }
 
     public ListNode<T> getNext() {
         return this.next;
+    }
+
+    public void setNext(ListNode<T> node) {
+        this.next = node;
     }
 
 }
