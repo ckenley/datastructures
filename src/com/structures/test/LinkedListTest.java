@@ -8,6 +8,8 @@ import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
 
+import java.util.Iterator;
+
 public class LinkedListTest extends TestCase {
 
     @Rule
@@ -108,6 +110,20 @@ public class LinkedListTest extends TestCase {
         assertTrue(testList.get(0).equals("1"));
         assertFalse(testList.get(0).equals("3"));
         assertTrue(testList.get(2).equals("9"));
+    }
+
+    @Test
+    public void testIterator() {
+        testList.add("1");
+        testList.add("2");
+        testList.add("3");
+        assert (testList.iterator() != null);
+        assert (testList.iterator() instanceof Iterator);
+        Iterator<String> iterator = testList.iterator();
+        assert (iterator.next().equals("1"));
+        assert (iterator.next().equals("2"));
+        assert (iterator.next().equals("3"));
+        assertFalse(iterator.hasNext());
     }
 
 }

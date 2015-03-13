@@ -2,10 +2,12 @@ package com.structures.list;
 
 import com.structures.node.ListNode;
 
+import java.util.Iterator;
+
 /*
  * A singly-linked LinkedList<T> implementation of List<T>
  */
-public class LinkedList<T> implements List<T> {
+public class LinkedList<T> implements List<T>, Iterable<T> {
 
     private ListNode<T> head;
 
@@ -38,13 +40,30 @@ public class LinkedList<T> implements List<T> {
     }
 
     @Override
+    public Iterator<T> iterator() {
+        return new Iterator<T>() {
+            private int index;
+
+            @Override
+            public boolean hasNext() {
+                return this.index < size();
+            }
+
+            @Override
+            public T next() {
+                return get(this.index++);
+            }
+        };
+    }
+
+    @Override
     public boolean add(T value) {
         if (value != null) {
             if (head == null) {
                 head = new ListNode<T>(value);
                 return true;
             } else {
-                ListNode n = head;
+                ListNode<T> n = head;
                 while (n.getNext() != null) {
                     n = n.getNext();
                 }

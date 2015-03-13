@@ -3,7 +3,7 @@ package com.structures.list;
 /*
  * Interface contract for classes implementing List<T>
  */
-public interface List<T> {
+public interface List<T> extends Iterable<T> {
 
     int size();
 
