@@ -4,7 +4,7 @@ import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 
 @RunWith(Suite.class)
-@Suite.SuiteClasses(LinkedListTest.class)
+@Suite.SuiteClasses({LinkedListTest.class, HashMapTest.class})
 public class TestSuite {
 
 }

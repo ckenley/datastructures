@@ -12,7 +12,6 @@ public class ListNode<T> implements Node<T> {
     }
 
     public ListNode(T value) {
-        super();
         this.value = value;
     }
 

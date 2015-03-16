@@ -30,7 +30,7 @@ public class LinkedListTest extends TestCase {
     @Test
     public void testAdd() {
         testList.add("value1");
-        assertEquals(testList.get(0), "value1");
+        assertEquals("value1", testList.get(0));
     }
 
     @Test
@@ -111,6 +111,17 @@ public class LinkedListTest extends TestCase {
         assertFalse(testList.get(0).equals("3"));
         assertTrue(testList.get(2).equals("9"));
     }
+
+    @Test
+    public void testSet() {
+        testList.add("1");
+        testList.add("2");
+        testList.add("3");
+        assertEquals(testList.get(1), "2");
+        assertEquals(testList.set(1, "3"), "3");
+        assertEquals(testList.get(1), "3");
+    }
+
 
     @Test
     public void testIterator() {
