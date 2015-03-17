@@ -1,8 +1,8 @@
 package com.structures.test;
 
-import java.util.Iterator;
+import static org.junit.Assert.*;
 
-import junit.framework.TestCase;
+import java.util.Iterator;
 
 import org.junit.After;
 import org.junit.Before;
@@ -12,7 +12,7 @@ import org.junit.rules.ExpectedException;
 
 import com.structures.list.LinkedList;
 
-public class LinkedListTest extends TestCase {
+public class LinkedListTest {
 
 	@Rule
 	public ExpectedException exception = ExpectedException.none();

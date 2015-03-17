@@ -1,12 +1,12 @@
 package com.structures.test;
 
-import com.structures.map.HashMap;
-import com.structures.map.Map;
+import static org.junit.Assert.*;
+
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-
-import static org.junit.Assert.assertTrue;
+import com.structures.map.HashMap;
+import com.structures.map.Map;
 
 public class HashMapTest {
 
@@ -15,7 +15,6 @@ public class HashMapTest {
 
     @Before
     public void setUp() {
-
         testMap = new HashMap<Integer, String>(SIZE);
     }
 
@@ -23,13 +22,23 @@ public class HashMapTest {
     public void tearDown() {
         testMap = null;
     }
+    
+    @Test
+    public void testContructor(){
+    	assertTrue(testMap.size() == 128);
+    	assertTrue(testMap.get(0) == null);
+    	assertTrue(testMap.get(127) == null);
+    }
 
     @Test
     public void testClear() throws Exception {
-        testMap.put(1, "F");
-        assertTrue(testMap.isEmpty());
+        assertEquals("F", testMap.put(1, "F"));
+        assertTrue(!testMap.isEmpty());
         testMap.clear();
         assertTrue(testMap.isEmpty());
+        assertTrue(testMap.size() == 128);
+        assertTrue(testMap.get(0) == null);
+    	assertTrue(testMap.get(127) == null);
     }
 
     @Test

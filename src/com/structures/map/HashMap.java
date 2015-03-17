@@ -19,9 +19,11 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public void clear() {
-        for (List bucket : table) {
-            bucket = null;
-        }
+    	for (List<Entry<K,V>> bucket : table){
+    		if (bucket != null){
+    			bucket.clear();
+    		}
+    	}
     }
 
     @Override
@@ -55,12 +57,15 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean isEmpty() {
-        for (List list : table) {
-            if (list != null) {
-                return false;
+    	boolean empty = true;
+        for (List<Entry<K, V>> bucket : table) {
+            if (bucket != null) {
+            	if (bucket.size() > 0){
+            		empty = false;
+            	}
             }
         }
-        return true;
+        return empty;
     }
 
     @Override
@@ -70,11 +75,12 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public V put(K key, V value) {
-        Entry<K, V> entry = new HashEntry<K, V>(key, value);
+        Entry<K, V> entry = new HashEntry(key, value);
         int index = hash(key);
         List<Entry<K, V>> bucket = table.get(index);
         if (bucket == null) {
             bucket = new LinkedList<Entry<K, V>>();
+            table.set(index, bucket);
         }
         bucket.add(entry);
         return value;
@@ -99,7 +105,7 @@ public class HashMap<K, V> implements Map<K, V> {
         return (key.hashCode() & Integer.MAX_VALUE) % size;
     }
 
-    private class HashEntry<K, V> implements Entry<K, V> {
+    private class HashEntry implements Entry<K, V> {
 
         private K key;
         private V value;
