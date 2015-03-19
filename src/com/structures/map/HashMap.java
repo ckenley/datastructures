@@ -4,6 +4,7 @@ import com.structures.list.LinkedList;
 import com.structures.list.List;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.Set;
 
 
@@ -28,17 +29,32 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public boolean containsKey(K key) {
-        return false;
+    	return get(key) != null;
     }
 
     @Override
     public boolean containsValue(V value) {
+    	for (List<Entry<K,V>> bucket : table){
+    		if (bucket != null){
+    			for (Entry<K,V> entry : bucket){
+    				if (entry.getValue().equals(value)){
+    					return true;
+    				}
+    			}
+    		}
+    	}
         return false;
     }
 
     @Override
     public Set<Entry<K, V>> entrySet() {
-        return null;
+    	Set<Entry<K,V>> entries = new HashSet<Entry<K,V>>();
+    	for (List<Entry<K,V>> bucket : table){
+    		for (Entry<K,V> entry : bucket){
+    			entries.add(entry);
+    		}
+    	}
+        return entries;
     }
 
     @Override
@@ -70,13 +86,20 @@ public class HashMap<K, V> implements Map<K, V> {
 
     @Override
     public Set<K> keySet() {
-        return null;
+    	Set<K> keys = new HashSet<K>();
+    	for (List<Entry<K,V>> bucket : table){
+    		for (Entry<K,V> entry : bucket){
+    			keys.add(entry.getKey());
+    		}
+    	}
+    	return keys;
     }
 
     @Override
     public V put(K key, V value) {
         Entry<K, V> entry = new HashEntry(key, value);
         int index = hash(key);
+        System.out.println("computed hash: " + index);
         List<Entry<K, V>> bucket = table.get(index);
         if (bucket == null) {
             bucket = new LinkedList<Entry<K, V>>();

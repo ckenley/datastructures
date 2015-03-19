@@ -5,17 +5,18 @@ import static org.junit.Assert.*;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+
 import com.structures.map.HashMap;
 import com.structures.map.Map;
 
 public class HashMapTest {
 
     private final int SIZE = 128;
-    private Map<Integer, String> testMap;
+    private Map<String, String> testMap;
 
     @Before
     public void setUp() {
-        testMap = new HashMap<Integer, String>(SIZE);
+        testMap = new HashMap<String, String>(SIZE);
     }
 
     @After
@@ -26,29 +27,32 @@ public class HashMapTest {
     @Test
     public void testContructor(){
     	assertTrue(testMap.size() == 128);
-    	assertTrue(testMap.get(0) == null);
-    	assertTrue(testMap.get(127) == null);
     }
 
     @Test
     public void testClear() throws Exception {
-        assertEquals("F", testMap.put(1, "F"));
+        assertEquals("Z", testMap.put("A", "Z"));
         assertTrue(!testMap.isEmpty());
         testMap.clear();
         assertTrue(testMap.isEmpty());
-        assertTrue(testMap.size() == 128);
-        assertTrue(testMap.get(0) == null);
-    	assertTrue(testMap.get(127) == null);
     }
 
     @Test
     public void testContainsKey() throws Exception {
-
+    	testMap.put("A", "Z");
+    	testMap.put("Z", "A");
+    	assertTrue(testMap.containsKey("A"));
+    	assertFalse(testMap.containsKey("C"));
+    	assertTrue(testMap.containsKey("Z"));
     }
 
     @Test
     public void testContainsValue() throws Exception {
-
+    	testMap.put("A", "Z");
+    	testMap.put("Z", "A");
+    	assertTrue(testMap.containsValue("A"));
+    	assertTrue(testMap.containsValue("Z"));
+    	assertFalse(testMap.containsValue("C"));
     }
 
     @Test
@@ -63,7 +67,9 @@ public class HashMapTest {
 
     @Test
     public void testIsEmpty() throws Exception {
-
+    	assertTrue(testMap.isEmpty());
+    	testMap.put("A", "Z");
+    	assertFalse(testMap.isEmpty());
     }
 
     @Test
