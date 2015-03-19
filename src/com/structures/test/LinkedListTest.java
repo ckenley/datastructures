@@ -20,12 +20,12 @@ public class LinkedListTest {
 	private LinkedList<String> testList;
 
 	@Before
-	protected void setUp() {
+	public void setUp() {
 		testList = new LinkedList<String>();
 	}
 
 	@After
-	protected void tearDown() {
+	public void tearDown() {
 		testList = null;
 	}
 
@@ -58,7 +58,6 @@ public class LinkedListTest {
 	public void testGet() {
 		testList.add("1");
 		testList.add("2");
-		testList.add("3");
 		assertEquals("1", testList.get(0));
 		assertEquals("2", testList.get(1));
 

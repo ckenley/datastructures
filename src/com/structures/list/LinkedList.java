@@ -107,16 +107,43 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
 
 	@Override
 	public boolean remove(int index) {
-		if (isEmpty() || index < 0 || index > size() - 1) {
+		System.out.println(isEmpty());
+		if (isEmpty() || index < 0 || index >= size()) {
 			return false;
 		}
-		ListNode<T> n = head;
+		ListNode<T> prev = head;
+		ListNode<T> n = prev.getNext();
 		for (int i = 0; i < index; i++) {
+			prev = n;
 			n = n.getNext();
+		}
+		if (n.getNext() != null){
+			prev.setNext(n.getNext());
 		}
 		n = null;
 		size--;
 		return true;
+	}
+	
+
+	@Override
+	public boolean remove(T value) {
+		if (isEmpty()){
+			return false;
+		}
+		ListNode<T> n = head;
+		ListNode<T> prev;
+		while (n.getNext() != null){
+			prev = n;
+			n = n.getNext();
+			if (n.getValue().equals(value)){
+				prev.setNext(n.getNext());
+				n = null;
+				size--;
+				return  true;
+			}
+		}
+		return false;
 	}
 
 	@Override
