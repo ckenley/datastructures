@@ -98,7 +98,6 @@ public class HashMap<K, V> implements Map<K, V> {
 	public V put(K key, V value) {
 		Entry<K, V> entry = new HashEntry(key, value);
 		int index = hash(key);
-		System.out.println("computed hash: " + index);
 		List<Entry<K, V>> bucket = table.get(index);
 		if (bucket == null) {
 			bucket = new LinkedList<Entry<K, V>>();
@@ -117,7 +116,7 @@ public class HashMap<K, V> implements Map<K, V> {
 			for (Entry<K, V> e : bucket) {
 				if (e.getKey().equals(key)) {
 					value = e.getValue();
-					bucket.remove(index); // TODO Implement remove by Object!
+					bucket.remove(e);
 					return value;
 				}
 			}

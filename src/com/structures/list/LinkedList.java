@@ -107,40 +107,53 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
 
 	@Override
 	public boolean remove(int index) {
-		System.out.println(isEmpty());
 		if (isEmpty() || index < 0 || index >= size()) {
 			return false;
 		}
+		if (index == 0) {
+			if (size > 1) {
+				head = head.getNext();
+			} else {
+				head = null;
+			}
+			size--;
+			return true;
+		}
 		ListNode<T> prev = head;
-		ListNode<T> n = prev.getNext();
-		for (int i = 0; i < index; i++) {
-			prev = n;
-			n = n.getNext();
+		ListNode<T> next = head.getNext();
+		for (int i = 0; i < index - 1; i++) {
+			prev = next;
+			next = next.getNext();
 		}
-		if (n.getNext() != null){
-			prev.setNext(n.getNext());
-		}
-		n = null;
+		prev.setNext(next.getNext());
+		next = null;
 		size--;
 		return true;
 	}
-	
 
 	@Override
 	public boolean remove(T value) {
-		if (isEmpty()){
+		if (isEmpty()) {
 			return false;
 		}
-		ListNode<T> n = head;
-		ListNode<T> prev;
-		while (n.getNext() != null){
+		if (size() == 1) {
+			if (head.getValue().equals(value)) {
+				head = null;
+				size = 0;
+				return true;
+			}
+			return false;
+		}
+		ListNode<T> prev = head;
+		ListNode<T> n = head.getNext();
+		while (n.getNext() != null) {
 			prev = n;
 			n = n.getNext();
-			if (n.getValue().equals(value)){
+			if (n.getValue().equals(value)) {
 				prev.setNext(n.getNext());
 				n = null;
 				size--;
-				return  true;
+				return true;
 			}
 		}
 		return false;
