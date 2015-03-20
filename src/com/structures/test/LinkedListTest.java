@@ -75,13 +75,9 @@ public class LinkedListTest {
 	@Test
 	public void testRemove() {
 		testList.add("1");
-		testList.add("2");
-		testList.add("3");
-		assertFalse(testList.remove(4));
+		assertFalse(testList.remove(1));
 		assertFalse(testList.remove(-1));
-		assertTrue(testList.remove(2));
 		assertTrue(testList.remove(0));
-		assertEquals("2", testList.get(0));
 	}
 
 	@Test
