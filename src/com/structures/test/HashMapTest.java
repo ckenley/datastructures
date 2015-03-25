@@ -57,7 +57,6 @@ public class HashMapTest {
 
     @Test
     public void testEntrySet() throws Exception {
-
     }
 
     @Test
@@ -79,7 +78,7 @@ public class HashMapTest {
 
     @Test
     public void testPut() throws Exception {
-
+    	assertEquals("Z", testMap.put("A", "Z"));
     }
 
     @Test

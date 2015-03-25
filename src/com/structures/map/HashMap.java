@@ -10,7 +10,13 @@ import java.util.Set;
 public class HashMap<K, V> implements Map<K, V> {
 
 	private int size;
+	private final int DEFAULT_SIZE = 16;
 	private List<List<Entry<K, V>>> table;
+	
+	public HashMap(){
+		size = DEFAULT_SIZE;
+		table = new LinkedList<>(size);
+	}
 
 	public HashMap(int size) {
 		this.size = size;
@@ -98,13 +104,14 @@ public class HashMap<K, V> implements Map<K, V> {
 	public V put(K key, V value) {
 		Entry<K, V> entry = new HashEntry(key, value);
 		int index = hash(key);
-		System.out.println("computed hash: " + index);
+		System.out.println("index: " + index);
+		System.out.println("size: " + size);
 		List<Entry<K, V>> bucket = table.get(index);
 		if (bucket == null) {
 			bucket = new LinkedList<Entry<K, V>>();
 			table.set(index, bucket);
 		}
-		bucket.add(entry);
+		bucket.add(entry); //TODO Implement contains so we can replace the current Key-Value pair.
 		return value;
 	}
 
