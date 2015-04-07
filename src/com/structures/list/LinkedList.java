@@ -14,13 +14,13 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
 	private int size;
 
 	public LinkedList() {
-		this.head = null;
-		this.size = 0;
+		head = null;
+		size = 0;
 	}
 
 	public LinkedList(ListNode<T> head) {
 		this.head = head;
-		this.size = 0;
+		size = 0;
 	}
 
 	public LinkedList(int size) {
@@ -222,6 +222,25 @@ public class LinkedList<T> implements List<T>, Iterable<T> {
 			return linkedList.get(index++);
 		}
 
+	}
+
+	@Override
+	public boolean contains(T value) {
+		if (size == 0) {
+			return false;
+		}
+		ListNode<T> n = head;
+		if (n.getValue().equals(value)) {
+			return true;
+		} else {
+			while (n.getNext() != null) {
+				n = n.getNext();
+				if (n.getValue().equals(value)) {
+					return true;
+				}
+			}
+		}
+		return false;
 	}
 
 }

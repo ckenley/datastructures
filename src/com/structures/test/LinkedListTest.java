@@ -136,5 +136,14 @@ public class LinkedListTest {
 		assertEquals("3", iterator.next());
 		assertFalse(iterator.hasNext());
 	}
+	
+	@Test
+	public void testContains(){
+		testList.add("1");
+		testList.add("2");
+		testList.add("3");
+		assertTrue(testList.contains("1"));
+		assertFalse(testList.contains("4"));
+	}
 
 }

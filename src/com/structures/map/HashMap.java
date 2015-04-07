@@ -104,14 +104,18 @@ public class HashMap<K, V> implements Map<K, V> {
 	public V put(K key, V value) {
 		Entry<K, V> entry = new HashEntry(key, value);
 		int index = hash(key);
-		System.out.println("index: " + index);
-		System.out.println("size: " + size);
 		List<Entry<K, V>> bucket = table.get(index);
 		if (bucket == null) {
 			bucket = new LinkedList<Entry<K, V>>();
 			table.set(index, bucket);
 		}
-		bucket.add(entry); //TODO Implement contains so we can replace the current Key-Value pair.
+		else if (containsKey(key)){
+			remove(key);
+			bucket.add(entry);
+		}
+		else{
+			bucket.add(entry); //TODO Implement contains so we can replace the current Key-Value pair.
+		}
 		return value;
 	}
 
@@ -124,7 +128,7 @@ public class HashMap<K, V> implements Map<K, V> {
 			for (Entry<K, V> e : bucket) {
 				if (e.getKey().equals(key)) {
 					value = e.getValue();
-					bucket.remove(index); // TODO Implement remove by Object!
+					bucket.remove(e);
 					return value;
 				}
 			}

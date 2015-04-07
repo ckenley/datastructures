@@ -26,5 +26,7 @@ public interface List<T> extends Iterable<T> {
     Iterator<T> iterator();
 
     T set(int index, T value);
+    
+    boolean contains(T value);
 
 }

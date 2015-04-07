@@ -26,5 +26,4 @@ public class StringAlgorithms {
 		char c = firstNonRepeated("STRESS");
 		System.out.println("First non repeated: " + c);
 	}
-
 }
