@@ -5,11 +5,17 @@ public class BinaryTreeNode<T> implements Node<T> {
 	
 	private T value;
 	private boolean discovered;
-	private TreeNode<T> parent;
-	private TreeNode<T> leftNode;
-	private TreeNode<T> rightNode;
+	private BinaryTreeNode<T> parent;
+	private BinaryTreeNode<T> leftNode;
+	private BinaryTreeNode<T> rightNode;
 	
+	public BinaryTreeNode(){}
 	
+	public BinaryTreeNode(T value) {
+		this.value = value;
+		this.leftNode = new BinaryTreeNode<T>();
+		this.rightNode = new BinaryTreeNode<T>();
+	}
 	@Override
 	public T getValue() {
 		return this.value;
@@ -24,22 +30,22 @@ public class BinaryTreeNode<T> implements Node<T> {
 	public void setDiscovered(boolean discovered) {
 		this.discovered = discovered;
 	}
-	public TreeNode<T> getParent() {
+	public BinaryTreeNode<T> getParent() {
 		return parent;
 	}
-	public void setParent(TreeNode<T> parent) {
+	public void setParent(BinaryTreeNode<T> parent) {
 		this.parent = parent;
 	}
-	public TreeNode<T> getLeftNode() {
+	public BinaryTreeNode<T> getLeftNode() {
 		return leftNode;
 	}
-	public void setLeftNode(TreeNode<T> leftNode) {
+	public void setLeftNode(BinaryTreeNode<T> leftNode) {
 		this.leftNode = leftNode;
 	}
-	public TreeNode<T> getRightNode() {
+	public BinaryTreeNode<T> getRightNode() {
 		return rightNode;
 	}
-	public void setRightNode(TreeNode<T> rightNode) {
+	public void setRightNode(BinaryTreeNode<T> rightNode) {
 		this.rightNode = rightNode;
 	}
 }
