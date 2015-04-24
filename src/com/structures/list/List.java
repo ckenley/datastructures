@@ -17,7 +17,7 @@ public interface List<T> extends Iterable<T> {
 
     boolean isEmpty();
 
-    boolean remove(int index);
+    T remove(int index);
     
     boolean remove(T value);
 

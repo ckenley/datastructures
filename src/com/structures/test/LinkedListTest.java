@@ -75,9 +75,14 @@ public class LinkedListTest {
 	@Test
 	public void testRemove() {
 		testList.add("1");
-		assertFalse(testList.remove(1));
-		assertFalse(testList.remove(-1));
-		assertTrue(testList.remove(0));
+		assertEquals("1", testList.remove(0));
+		
+		exception.expect(IndexOutOfBoundsException.class);
+		testList.remove(-1);
+		
+		exception.expect(IndexOutOfBoundsException.class);
+		testList.remove(0);
+		assertTrue(testList.isEmpty());
 	}
 
 	@Test
@@ -85,9 +90,9 @@ public class LinkedListTest {
 		testList.add("1");
 		testList.add("2");
 		testList.add("3");
-		assertEquals(1, testList.indexOf("1"));
-		assertEquals(2, testList.indexOf("2"));
-		assertEquals(3, testList.indexOf("3"));
+		assertEquals(0, testList.indexOf("1"));
+		assertEquals(1, testList.indexOf("2"));
+		assertEquals(2, testList.indexOf("3"));
 		assertEquals(-1, testList.indexOf("99"));
 	}
 
@@ -100,7 +105,6 @@ public class LinkedListTest {
 		assertTrue(testList.get(0).equals("3"));
 		assertTrue(testList.get(1).equals("1"));
 		assertTrue(testList.get(2).equals("2"));
-
 	}
 
 	@Test
@@ -120,7 +124,11 @@ public class LinkedListTest {
 		testList.add("3");
 		assertEquals("2", testList.get(1));
 		assertEquals("3", testList.set(1, "3"));
+		assertEquals("1", testList.get(0));
 		assertEquals("3", testList.get(1));
+		assertEquals("3", testList.get(2));
+		assertEquals(3, testList.size());
+		
 	}
 
 	@Test
@@ -143,6 +151,8 @@ public class LinkedListTest {
 		testList.add("2");
 		testList.add("3");
 		assertTrue(testList.contains("1"));
+		assertTrue(testList.contains("2"));
+		assertTrue(testList.contains("3"));
 		assertFalse(testList.contains("4"));
 	}
 
