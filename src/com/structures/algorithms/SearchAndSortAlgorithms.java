@@ -15,37 +15,46 @@ public class SearchAndSortAlgorithms {
 		sb.deleteCharAt(sb.lastIndexOf(","));
 
 		// quick sort
-		arr = quickSort(arr, 0, arr.length - 1);
+		int[] arr1 = quickSort(arr, 0, arr.length - 1);
 
 		sb.append("\n\nResult of quick sort: ");
-		for (int i = 0; i < arr.length; i++) {
-			sb.append(arr[i] + ", ");
+		for (int i = 0; i < arr1.length; i++) {
+			sb.append(arr1[i] + ", ");
 		}
 		sb.deleteCharAt(sb.lastIndexOf(","));
 		System.out.println(sb.toString());
 
 		sb = new StringBuilder();
 		// merge sort
-		arr = mergeSort(arr);
+		int[] arr2 = mergeSort(arr);
 		sb.append("\nResult of merge sort: ");
-		for (int i = 0; i < arr.length; i++) {
-			sb.append(arr[i] + ", ");
-		}
-		sb.deleteCharAt(sb.lastIndexOf(","));
-		System.out.println(sb.toString());
-		
-		sb = new StringBuilder();
-		// bubble sort
-		arr = bubbleSort(arr);
-		sb.append("\nResult of bubble sort: ");
-		for (int i = 0; i < arr.length; i++) {
-			sb.append(arr[i] + ", ");
+		for (int i = 0; i < arr2.length; i++) {
+			sb.append(arr2[i] + ", ");
 		}
 		sb.deleteCharAt(sb.lastIndexOf(","));
 		System.out.println(sb.toString());
 
-		System.out.println("\nIndex of 2: "
-				+ binarySearch(arr, 2, 0, arr.length));
+		sb = new StringBuilder();
+		// bubble sort
+		int[] arr3 = bubbleSort(arr);
+		sb.append("\nResult of bubble sort: ");
+		for (int i = 0; i < arr3.length; i++) {
+			sb.append(arr3[i] + ", ");
+		}
+		sb.deleteCharAt(sb.lastIndexOf(","));
+		System.out.println(sb.toString());
+
+		sb = new StringBuilder();
+		// insertion sort
+		int[] arr4 = insertionSort(arr);
+		sb.append("\nResult of insertion sort: ");
+		for (int i = 0; i < arr4.length; i++) {
+			sb.append(arr4[i] + ", ");
+		}
+		sb.deleteCharAt(sb.lastIndexOf(","));
+		System.out.println(sb.toString());
+
+		System.out.println("\nIndex of 2: " + binarySearch(arr, 2, 0, arr.length));
 	}
 
 	/*
@@ -136,7 +145,21 @@ public class SearchAndSortAlgorithms {
 				if (list[i] > list[i + 1]) {
 					swap(list, i, i + 1);
 					swapped = true;
-				}		
+				}
+			}
+		}
+		return list;
+	}
+
+	/*
+	 * Insertion sort implementation
+	 */
+	public static int[] insertionSort(int[] list) {
+		for (int i = 1; i < list.length - 1; i++) {
+			int j = i;
+			while (list[j - 1] > list[j] && j > 0) {
+				swap(list, j, j - 1);
+				j = j - 1;
 			}
 		}
 		return list;
