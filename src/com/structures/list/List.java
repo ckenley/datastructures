@@ -18,7 +18,7 @@ public interface List<T> extends Iterable<T> {
     boolean isEmpty();
 
     T remove(int index);
-    
+
     boolean remove(T value);
 
     int indexOf(T value);
@@ -26,7 +26,7 @@ public interface List<T> extends Iterable<T> {
     Iterator<T> iterator();
 
     T set(int index, T value);
-    
+
     boolean contains(T value);
 
 }

@@ -15,7 +15,7 @@ public class GenericSortingAlgorithmsTest extends TestCase {
     private Timer timer;
 
     public void setUp() {
-        unsorted = new ArrayList<Integer>();
+        unsorted = new ArrayList<>();
         rand = new Random();
         int counter = 0;
         while (counter++ < 9999) {

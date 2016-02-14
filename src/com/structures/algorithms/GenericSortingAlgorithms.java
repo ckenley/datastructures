@@ -33,8 +33,8 @@ public class GenericSortingAlgorithms<T> {
     /**
      * Generic Insertion Sort Implementation
      *
-     * @param list
-     * @param <T>
+     * @param list unsorted
+     * @param <T>  comparable type
      * @return Sorted List<T>
      */
     public static <T extends Comparable<T>> List<T> insertionSort(List<T> list) {
@@ -51,8 +51,8 @@ public class GenericSortingAlgorithms<T> {
     /**
      * Generic Bubble Sort Implementation
      *
-     * @param list
-     * @param <T>
+     * @param list unsorted
+     * @param <T>  comparable type
      * @return Sorted List<T>
      */
     public static <T extends Comparable<T>> List<T> bubbleSort(List<T> list) {
@@ -72,11 +72,11 @@ public class GenericSortingAlgorithms<T> {
     /**
      * Generic MergeSort Implementation
      *
-     * @param unsorted
-     * @param <T>
+     * @param unsorted list
+     * @param <T>      comparable item
      * @return Sorted List<T>
      */
-    public static <T extends Comparable> List<T> mergeSort(List<T> unsorted) {
+    public static <T extends Comparable<T>> List<T> mergeSort(List<T> unsorted) {
         if (unsorted.size() == 1) {
             return unsorted;
         }
@@ -91,7 +91,7 @@ public class GenericSortingAlgorithms<T> {
     }
 
     private static <T extends Comparable<T>> List<T> merge(List<T> left, List<T> right) {
-        List<T> sorted = new ArrayList<T>(left.size() + right.size());
+        List<T> sorted = new ArrayList<>(left.size() + right.size());
         while (left.size() > 0 && right.size() > 0) {
             if (left.get(0).compareTo(right.get(0)) < 0) {
                 sorted.add(left.get(0));
@@ -119,7 +119,7 @@ public class GenericSortingAlgorithms<T> {
     }
 
     public static void main(String[] args) {
-        List<Integer> unsorted = new ArrayList<Integer>();
+        List<Integer> unsorted = new ArrayList<>();
         unsorted.add(8);
         unsorted.add(6);
         unsorted.add(3);
