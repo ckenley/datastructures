@@ -33,9 +33,12 @@ public class ArrayListTest {
         assertTrue(testList.add("A"));
         assertEquals("A", testList.get(0));
         assertEquals(1, testList.size());
+        assertTrue(testList.add("B"));
+        assertEquals("B", testList.get(1));
+        assertEquals(2, testList.size());
 
         exception.expect(IndexOutOfBoundsException.class);
-        testList.get(1);
+        testList.get(2);
     }
 
     @Test
@@ -114,7 +117,5 @@ public class ArrayListTest {
         assertEquals("B", iterator.next());
         assertEquals("C", iterator.next());
         assertFalse(iterator.hasNext());
-
     }
-
 }

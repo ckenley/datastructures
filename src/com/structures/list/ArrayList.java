@@ -49,7 +49,7 @@ public class ArrayList<T> implements List<T> {
         if (index < 0 || index >= size) {
             throw new IndexOutOfBoundsException();
         }
-        return (T)array[index];
+        return (T) array[index];
     }
 
     @Override
@@ -63,7 +63,7 @@ public class ArrayList<T> implements List<T> {
             throw new IndexOutOfBoundsException();
         }
         T element = (T) array[index];
-        System.arraycopy(array, index, array, index + 1, array.length - 1);
+        System.arraycopy(array, index + 1, array, index, size - 1);
         size--;
         return element;
     }

@@ -31,6 +31,6 @@ public class GeneralAlgorithms {
     }
 
     public static void main(String[] args) {
-        System.out.println(fibonacciR(50));
+        System.out.println(fibonacci(50));
     }
 }

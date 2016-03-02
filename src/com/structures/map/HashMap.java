@@ -99,7 +99,6 @@ public class HashMap<K, V> implements Map<K, V> {
         for (List<Entry<K, V>> bucket : table) {
             if (bucket != null) {
                 if (!bucket.isEmpty()) {
-                    System.out.print("bucket not empty");
                     empty = false;
                 }
             }
