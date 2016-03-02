@@ -1,6 +1,5 @@
 ### Java template
 *.class
-bin/
 
 # Mobile Tools for Java (J2ME)
 .mtj.tmp/
