@@ -77,7 +77,7 @@ public class GenericSortingAlgorithms<T> {
      * @return Sorted List<T>
      */
     public static <T extends Comparable<T>> List<T> mergeSort(List<T> unsorted) {
-        if (unsorted.size() == 1) {
+        if (unsorted.size() <= 1){
             return unsorted;
         }
         int mid = unsorted.size() / 2;
@@ -91,23 +91,23 @@ public class GenericSortingAlgorithms<T> {
     }
 
     private static <T extends Comparable<T>> List<T> merge(List<T> left, List<T> right) {
-        List<T> sorted = new ArrayList<>(left.size() + right.size());
-        while (left.size() > 0 && right.size() > 0) {
-            if (left.get(0).compareTo(right.get(0)) < 0) {
+        List<T> sorted = new ArrayList<>();
+        while(!left.isEmpty() && !right.isEmpty()){
+            if (left.get(0).compareTo(right.get(0)) <= 0){
                 sorted.add(left.get(0));
-                left = left.subList(1, left.size());
+                left.remove(0);
             } else {
                 sorted.add(right.get(0));
-                right = right.subList(1, right.size());
+                right.remove(0);
             }
         }
-        while (left.size() > 0) {
+        while(!left.isEmpty()){
             sorted.add(left.get(0));
-            left = left.subList(1, left.size());
+            left.remove(0);
         }
-        while (right.size() > 0) {
+        while(!right.isEmpty()){
             sorted.add(right.get(0));
-            right = right.subList(1, right.size());
+            right.remove(0);
         }
         return sorted;
     }
