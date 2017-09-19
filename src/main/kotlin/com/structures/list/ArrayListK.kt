@@ -71,10 +71,6 @@ class ArrayListK<E> : List<E> {
         return currentSize == 0
     }
 
-    override fun iterator(): MutableIterator<E> {
-        return array.iterator() as MutableIterator<E>
-    }
-
     private fun resize() {
         this.array = array.copyOf(currentSize * 2)
     }
@@ -83,5 +79,9 @@ class ArrayListK<E> : List<E> {
         if (currentSize >= array.size) {
             resize()
         }
+    }
+
+    override fun iterator(): MutableIterator<E> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

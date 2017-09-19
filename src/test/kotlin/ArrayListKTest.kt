@@ -101,15 +101,4 @@ class ArrayListKTest {
         assertTrue(testList!!.contains("A"))
     }
 
-    /*@Test
-    fun testIterator() {
-        assertTrue(testList!!.add("A"))
-        assertTrue(testList!!.add("B"))
-        assertTrue(testList!!.add("C"))
-        val iterator = testList!!.iterator()
-        assertEquals("A", iterator.next())
-        assertEquals("B", iterator.next())
-        assertEquals("C", iterator.next())
-        assertFalse(iterator.hasNext())
-    }*/
 }

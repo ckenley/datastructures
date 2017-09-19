@@ -228,7 +228,7 @@ public class LinkedListJ<T> implements List<T>, Iterable<T> {
 
     private class LinkedListIterator implements Iterator<T> {
 
-        private final LinkedListJ<T> linkedListJ;
+        private LinkedListJ<T> linkedListJ;
         private int index;
 
         LinkedListIterator(LinkedListJ<T> linkedList) {
