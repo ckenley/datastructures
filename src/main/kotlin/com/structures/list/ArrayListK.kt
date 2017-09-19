@@ -3,7 +3,7 @@ package com.structures.list
 class ArrayListK<E> : List<E> {
 
     private val INITIAL_SIZE: Int = 10
-    private var currentSize: Int = INITIAL_SIZE
+    private var currentSize: Int = 0
     private var array = arrayOfNulls<Any>(INITIAL_SIZE)
 
     override fun size(): Int {
@@ -20,6 +20,7 @@ class ArrayListK<E> : List<E> {
     }
 
     override fun clear() {
+        currentSize = 0
         array = arrayOfNulls(currentSize)
     }
 
@@ -49,6 +50,9 @@ class ArrayListK<E> : List<E> {
     }
 
     override fun get(index: Int): E {
+        if (index < 0 || index >= currentSize) {
+            throw IndexOutOfBoundsException()
+        }
         return array[index] as E
     }
 
