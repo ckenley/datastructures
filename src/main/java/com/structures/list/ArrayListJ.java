@@ -118,7 +118,7 @@ public class ArrayListJ<T> implements List<T> {
 
     private class ArrayListIterator implements Iterator<T> {
 
-        private final ArrayListJ<T> arrayList;
+        private ArrayListJ<T> arrayList;
         private int index;
 
         ArrayListIterator(ArrayListJ<T> arrayList) {

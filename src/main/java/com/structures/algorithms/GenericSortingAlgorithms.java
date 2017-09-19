@@ -3,7 +3,7 @@ package com.structures.algorithms;
 import java.util.ArrayList;
 import java.util.List;
 
-public class GenericSortingAlgorithms<T> {
+public class GenericSortingAlgorithms {
 
     public static <T extends Comparable<T>> List<T> quickSort(List<T> list, int low, int high) {
         if (low < high) {
@@ -95,19 +95,19 @@ public class GenericSortingAlgorithms<T> {
         while (!left.isEmpty() && !right.isEmpty()) {
             if (left.get(0).compareTo(right.get(0)) <= 0) {
                 sorted.add(left.get(0));
-                left.remove(0);
+                left = left.subList(1, left.size());
             } else {
                 sorted.add(right.get(0));
-                right.remove(0);
+                right = right.subList(1, right.size());
             }
         }
         while (!left.isEmpty()) {
             sorted.add(left.get(0));
-            left.remove(0);
+            left = left.subList(1, left.size());
         }
         while (!right.isEmpty()) {
             sorted.add(right.get(0));
-            right.remove(0);
+            right = right.subList(1, right.size());
         }
         return sorted;
     }
