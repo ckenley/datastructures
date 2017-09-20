@@ -4,64 +4,56 @@ class ArrayListK<E> : List<E> {
 
     private val INITIAL_SIZE: Int = 10
     private var currentSize: Int = 0
-    private var array = arrayOfNulls<Any>(INITIAL_SIZE)
+    private var arr = arrayOfNulls<Any>(INITIAL_SIZE)
 
     override fun size(): Int {
         return currentSize
     }
 
     override fun add(value: E): Boolean {
-        if (array.contains(value)) {
+        if (arr.contains(value)) {
             return false
         }
         checkSize()
-        array[currentSize++] = value
+        arr[currentSize++] = value
         return true
     }
 
     override fun clear() {
         currentSize = 0
-        array = arrayOfNulls(currentSize)
+        arr = arrayOfNulls(INITIAL_SIZE)
     }
 
     override fun remove(index: Int): E {
-        val item: E = get(index)
-        System.arraycopy(array, index + 1, array, index, currentSize--)
+        val item = get(index)
+        System.arraycopy(arr, index + 1, arr, index, currentSize--)
         return item
-    }
-
-    override fun remove(value: E): Boolean {
-        if (value in array) {
-            System.arraycopy(array, array.indexOf(value) + 1, array, array.indexOf(value), currentSize--)
-            return true
-        }
-        return false
     }
 
     override fun set(index: Int, value: E): E {
         val existing = get(index)
-        array[index] = value
+        arr[index] = value
         return existing
     }
 
-
     override fun contains(element: E): Boolean {
-        return element in array
+        return element in arr
     }
+
 
     override fun get(index: Int): E {
         if (index < 0 || index >= currentSize) {
             throw IndexOutOfBoundsException()
         }
-        return array[index] as E
+        return arr[index] as E
     }
 
     /**
      * Returns first index of [element], or -1 if the collection does not contain element.
      */
     override fun indexOf(element: E): Int {
-        if (element in array) {
-            return array.indexOf(element)
+        if (element in arr) {
+            return arr.indexOf(element)
         } else {
             return -1
         }
@@ -72,16 +64,20 @@ class ArrayListK<E> : List<E> {
     }
 
     private fun resize() {
-        this.array = array.copyOf(currentSize * 2)
+        this.arr = arr.copyOf(currentSize * 2)
     }
 
     private fun checkSize() {
-        if (currentSize >= array.size) {
+        if (currentSize >= arr.size) {
             resize()
         }
     }
 
     override fun iterator(): MutableIterator<E> {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun remove(value: E): Boolean {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }
